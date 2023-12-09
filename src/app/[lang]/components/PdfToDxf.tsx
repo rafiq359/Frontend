@@ -17,7 +17,7 @@ function Home({ data }: { data: any }) {
   const btnText = {
     title: data.data[0].attributes.upload_text,
     desc: data.data[0].attributes.upload_desc,
-   
+
     fileExt: data.data[0].attributes.file_ext,
     sending_file_format: data.data[0].attributes.send_file_format,
   };
@@ -84,11 +84,14 @@ function Home({ data }: { data: any }) {
             </p>
             <div className="my-7">
               {data.data[0].attributes.issues.map(
-                (issue: { title: string; description: string }) => (
-                  <>
+                (
+                  issue: { title: string; description: string },
+                  index: number
+                ) => (
+                  <div key={index}>
                     <p className="my-3 text-lg font-medium">{issue.title}</p>
                     <p className="text-md">{issue.description}</p>
-                  </>
+                  </div>
                 )
               )}
             </div>
@@ -100,11 +103,11 @@ function Home({ data }: { data: any }) {
             <div className="my-7">
               {data.data[0].attributes.faqs.map(
                 (
-                  faq: { title: string; description: string },
+                  faq: { id: number; title: string; description: string },
                   index: number
                 ) => {
                   return (
-                    <div className="join join-vertical w-full" key={index}>
+                    <div className="join join-vertical w-full" key={faq.id}>
                       <div
                         className={`collapse collapse-arrow join-item border border-base-300 mb-3 ${
                           openIndex === index ? "open" : ""
@@ -114,7 +117,7 @@ function Home({ data }: { data: any }) {
                           type="radio"
                           name={`my-accordion-${index}`}
                           checked={openIndex === index}
-                          onClick={() => handleAccordionClick(index)}
+                          onChange={() => handleAccordionClick(index)}
                         />
                         <div className="collapse-title text-xl font-medium">
                           {faq.title}

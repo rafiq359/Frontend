@@ -17,7 +17,7 @@ const initialState: LangState = {
 };
 
 const i18nReducer = (
-  state: LangState,
+  state: LangState = initialState,
   action: any,
   dropdown: Link[]
 ): LangState => {

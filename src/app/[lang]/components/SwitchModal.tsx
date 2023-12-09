@@ -96,7 +96,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   }}
                 >
                   <span className="text-base font-medium">{item.label}</span>
-                  {initialLangState.lang === locale && (
+                  {state.lang === locale && (
                     <span>
                       <FaCheck />
                     </span>

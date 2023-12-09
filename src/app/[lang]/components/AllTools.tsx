@@ -28,8 +28,8 @@ function AllTools({
         </div>
         <div className="flex-grow">
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
-            {tools.map((tool) => (
-              <Link href={`tools/${tool.attributes.slug}`}>
+            {tools.map((tool, index) => (
+              <Link href={`tools/${tool.attributes.slug}`} key={index}>
                 <div className="bg-blue-200 p-3 rounded-md shadow-lg">
                   {tool.attributes.title}
                 </div>
